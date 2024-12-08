@@ -19,6 +19,7 @@ public class LocatorsEx3 {
 		driver.navigate().back();
 		driver.navigate().forward();
 		Thread.sleep(3000);
+		//
 		
 		driver.close();
 	}
