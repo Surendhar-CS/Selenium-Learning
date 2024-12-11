@@ -10,7 +10,7 @@ import org.openqa.selenium.interactions.Actions;
 public class ActionsDemo {
 
 	public static void main(String[] args) throws InterruptedException {
-		// TODO Auto-generated method stub
+	
 			WebDriver driver=new EdgeDriver();
 			driver.manage().window().maximize();
 			driver.get("https://www.amazon.in/");

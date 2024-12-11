@@ -11,7 +11,6 @@ import org.openqa.selenium.edge.EdgeDriver;
 public class AutosuggestiveDropdown {
 
 	public static void main(String[] args) throws InterruptedException {
-		// TODO Auto-generated method stub
 		
 //	System.setProperty("webdriver.chrome.driver", "C:\\Users\\SURA\\Documents\\Selenium QA\\seleniumQA\\src\\main\\resources\\drivers\\chromedriver.exe");
 

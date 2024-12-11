@@ -9,7 +9,6 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.edge.EdgeDriver;
-import org.openqa.selenium.interactions.Actions;
 
 public class WebDriverScopeTest {
 
@@ -35,7 +34,7 @@ public class WebDriverScopeTest {
 	WebElement column=footerSection.findElement(By.xpath("//table/tbody/tr/td[1]/ul"));
 		int columnSize=column.findElements(By.tagName("a")).size();
 		
-		Actions mouse=new Actions(driver);
+//		Actions mouse=new Actions(driver);
 		System.out.println(columnSize);
 		for(int i=1;i<columnSize;i++)
 		{

@@ -17,7 +17,7 @@ import org.testng.asserts.SoftAssert;
 public class StatusCodeTest {
 
 	public static void main(String[] args) throws MalformedURLException, IOException {
-		// TODO Auto-generated method stub
+		
 		WebDriver driver=new EdgeDriver();
 		
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
