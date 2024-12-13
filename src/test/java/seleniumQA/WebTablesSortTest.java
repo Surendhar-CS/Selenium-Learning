@@ -8,6 +8,9 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -46,13 +49,17 @@ public class WebTablesSortTest {
 			List<WebElement> rows = driver.findElements(By.cssSelector(".table-bordered td:nth-child(1)"));
 			price = rows.stream().filter(s -> s.getText().equalsIgnoreCase("Wheat")).map(s -> getPriceVeggie(s))
 					.collect(Collectors.toList());
-			driver.findElement(By.cssSelector(".pagination [aria-label='Next']")).click();
+			if(price.size()<1)
+			{
+				driver.findElement(By.cssSelector(".pagination [aria-label='Next']")).click();
+			}
+			
 
 		} while (price.size() < 1);
 
 		
-		Wait wait=new WebDriverWait(driver, Duration.ofSeconds(10));
-		wait.until(driver.findElement(By.cssSelector(".pagination [aria-label='Next']")).isEnabled());
+//		WebDriverWait wait=new WebDriverWait(driver, Duration.ofSeconds(10));
+//		wait.until(ExpectedConditions.elementToBeClickable(driver.findElement(By.cssSelector(".pagination [aria-label='Next']"))));
 		System.out.println(price.get(0));
 		
 		Thread.sleep(2000L);
