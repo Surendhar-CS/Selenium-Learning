@@ -1,9 +1,13 @@
 package seleniumQA;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.Iterator;
 import java.util.Set;
 
+import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.By;
+import org.openqa.selenium.OutputType;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.WindowType;
@@ -56,7 +60,23 @@ public class relativeLocatorTest {
 		WebElement nameField = driver.findElement(By.cssSelector("[name='name']"));
 		nameField.sendKeys(firstCourse);
 		
+		
+		//code to take partial screenshot of name field
+		File nameScreenshot = nameField.getScreenshotAs(OutputType.FILE);
+		try {
+			FileUtils.copyFile(nameScreenshot, new File("nameScreenshot.png"));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
+		
+		//get height and weight of the element
+		int height = nameField.getRect().getDimension().height;
+		int width = nameField.getRect().getDimension().width;
+		System.out.println(height+"\n"+width);
+		
+		}
+	
 
 	@AfterTest
 	public void closeDriver() throws InterruptedException {
