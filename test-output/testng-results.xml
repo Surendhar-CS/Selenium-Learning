@@ -2,24 +2,24 @@
 <testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2024-12-15T19:30:58 IST" name="Default suite" finished-at="2024-12-15T19:31:11 IST" duration-ms="12898">
+  <suite started-at="2024-12-19T09:18:02 IST" name="Default suite" finished-at="2024-12-19T09:18:03 IST" duration-ms="83">
     <groups>
     </groups>
-    <test started-at="2024-12-15T19:30:58 IST" name="Default test" finished-at="2024-12-15T19:31:11 IST" duration-ms="12898">
-      <class name="seleniumQA.relativeLocatorTest">
-        <test-method is-config="true" signature="LaunchBrowser()[pri:0, instance:seleniumQA.relativeLocatorTest@5cdd09b1]" started-at="2024-12-15T19:30:58 IST" name="LaunchBrowser" finished-at="2024-12-15T19:31:00 IST" duration-ms="2716" status="PASS">
+    <test started-at="2024-12-19T09:18:02 IST" name="Default test" finished-at="2024-12-19T09:18:03 IST" duration-ms="83">
+      <class name="coreJavaPractice.Inheritance.Childclass1">
+        <test-method is-config="true" signature="beforeRun()[pri:0, instance:coreJavaPractice.Inheritance.Childclass1@4d5d943d]" started-at="2024-12-19T09:18:02 IST" name="beforeRun" finished-at="2024-12-19T09:18:02 IST" duration-ms="16" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- LaunchBrowser -->
-        <test-method signature="invokingMultipleWindowsTest()[pri:0, instance:seleniumQA.relativeLocatorTest@5cdd09b1]" started-at="2024-12-15T19:31:00 IST" name="invokingMultipleWindowsTest" finished-at="2024-12-15T19:31:05 IST" duration-ms="4725" status="PASS">
+        </test-method> <!-- beforeRun -->
+        <test-method signature="childTest()[pri:0, instance:coreJavaPractice.Inheritance.Childclass1@4d5d943d]" started-at="2024-12-19T09:18:03 IST" name="childTest" finished-at="2024-12-19T09:18:03 IST" duration-ms="7" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- invokingMultipleWindowsTest -->
-        <test-method is-config="true" signature="closeDriver()[pri:0, instance:seleniumQA.relativeLocatorTest@5cdd09b1]" started-at="2024-12-15T19:31:05 IST" name="closeDriver" finished-at="2024-12-15T19:31:11 IST" duration-ms="5414" status="PASS">
+        </test-method> <!-- childTest -->
+        <test-method is-config="true" signature="afterRun()[pri:0, instance:coreJavaPractice.Inheritance.Childclass1@4d5d943d]" started-at="2024-12-19T09:18:03 IST" name="afterRun" finished-at="2024-12-19T09:18:03 IST" duration-ms="1" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- closeDriver -->
-      </class> <!-- seleniumQA.relativeLocatorTest -->
+        </test-method> <!-- afterRun -->
+      </class> <!-- coreJavaPractice.Inheritance.Childclass1 -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>

@@ -16,6 +16,10 @@ public class Childclass1  extends ParentClass1{
 		
 		System.out.println(Obj.increment());
 		System.out.println(Obj.decrement());
+//		Childclass3 Obj1=new Childclass3(a);
+		
+//		System.out.println(Obj1.multiplyThree());
+		System.out.println(Obj.multiplyThree());
 	}
 	
 	

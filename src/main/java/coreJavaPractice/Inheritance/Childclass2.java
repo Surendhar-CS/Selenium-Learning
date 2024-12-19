@@ -1,9 +1,10 @@
 package coreJavaPractice.Inheritance;
 
-public class Childclass2 {
+public class Childclass2 extends Childclass3{
 	int a;
 
 	public Childclass2(int a) {
+		super(a);
 		this.a = a;
 	}
 
