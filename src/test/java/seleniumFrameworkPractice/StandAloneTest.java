@@ -92,7 +92,6 @@ public class StandAloneTest {
 				.findFirst().orElse(null);
 		System.out.println(countryS.getAttribute("innerHTML"));
 		key.moveToElement(countryS).click().build().perform();
-		
 //		driver.findElement(By.cssSelector(".btnn.action__submit .ng-star-inserted")).click();
 //		driver.findElement(By.partialLinkText("Place Order")).click();
 //		WebElement placeOrder=driver.findElement(By.partialLinkText("Place Order"));
