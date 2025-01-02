@@ -22,6 +22,9 @@ public class LandingPage extends AbstractComponents{
 	@FindBy(name="login")
 	WebElement loginBtn;
 	
+	@FindBy(css=".ng-trigger-flyInOut")
+	WebElement toastMsgError;
+	
 	public LandingPage(WebDriver driver)
 	{
 		super(driver);
@@ -41,5 +44,10 @@ public class LandingPage extends AbstractComponents{
 	public void goTo()
 	{
 		driver.get("https://rahulshettyacademy.com/client");
+	}
+	
+	public String getErrorMsg()
+	{
+		return toastMsgError.getText();
 	}
 }
