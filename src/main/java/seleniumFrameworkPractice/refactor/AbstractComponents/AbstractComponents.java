@@ -17,72 +17,68 @@ import seleniumFrameworkPractice.refactor.pageobjects.OrderPage;
 
 public class AbstractComponents {
 
-	 WebDriver driver;
-	 
-	 WebDriverWait wait;
-	 Actions key;
+	WebDriver driver;
 
+	WebDriverWait wait;
+	Actions key;
 
-	 @FindBy(css="[routerlink*='cart']")
-	 WebElement cartBtn;
-	 
-	 @FindBy(css="[routerlink*='myorders']")
-	 WebElement OrdersBtn;
-	 
-	public AbstractComponents(WebDriver driver)
-	{
-		this.driver=driver;
-		
-		wait=new WebDriverWait(driver, Duration.ofSeconds(10));
-		key=new Actions(driver);
+	@FindBy(css = "[routerlink*='cart']")
+	WebElement cartBtn;
+
+	@FindBy(css = "[routerlink*='myorders']")
+	WebElement OrdersBtn;
+
+	public AbstractComponents(WebDriver driver) {
+		this.driver = driver;
+
+		wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+		key = new Actions(driver);
 	}
-	
-	
+
 	public CartPage goToCartPage() {
+		scrollTotheElement(cartBtn);
 		waitForElementToBeClickable(cartBtn);
 		cartBtn.click();
 		return new CartPage(driver);
 	}
+
 	public OrderPage goToOrderPage() {
 		waitForElementToBeClickable(OrdersBtn);
 		OrdersBtn.click();
 		return new OrderPage(driver);
 	}
-	
-	
-	public void waitForElementToBeClickable(WebElement cartBtn)
-	{
+
+	public void waitForElementToBeClickable(WebElement cartBtn) {
 		wait.until(ExpectedConditions.elementToBeClickable(cartBtn));
 	}
-	public void waitForElementToAppear(By findBy)
-	{
-		
+
+	public void waitForElementToAppear(By findBy) {
+
 		wait.until(ExpectedConditions.visibilityOfElementLocated(findBy));
 	}
-	public void waitForElementToAppear(WebElement findBy)
-	{
-		
+
+	public void waitForElementToAppear(WebElement findBy) {
+
 		wait.until(ExpectedConditions.visibilityOf(findBy));
 	}
-	
-	public void waitForElementToDisappear(WebElement findBy)
-	{
-		
+
+	public void waitForElementToDisappear(WebElement findBy) {
+
 		wait.until(ExpectedConditions.invisibilityOf(findBy));
 	}
-	
-	public void waitForVisibilityOfAllElements(List<WebElement> countryDropdown)
-	{
-		
+
+	public void waitForVisibilityOfAllElements(List<WebElement> countryDropdown) {
+
 		wait.until(ExpectedConditions.visibilityOfAllElements(countryDropdown));
-			
+
 	}
 
+	public void scrollTotheElement(WebElement findBy) {
+		key.scrollToElement(findBy).build().perform();;
+	}
 
-	public void inputTextField(String value)
-	{
+	public void inputTextField(String value) {
 		key.sendKeys(value).build().perform();
 	}
 
-	
 }

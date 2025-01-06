@@ -1,19 +1,21 @@
 package seleniumFrameworkPractice.refactor.tests;
 
+import java.io.File;
 import java.io.IOException;
-import java.time.Duration;
+import java.util.HashMap;
+import java.util.List;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.edge.EdgeDriver;
+import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.testng.Assert;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
 import seleniumFrameworkPractice.refactor.TestComponents.BaseTest;
 import seleniumFrameworkPractice.refactor.pageobjects.CartPage;
 import seleniumFrameworkPractice.refactor.pageobjects.CheckOutPage;
-import seleniumFrameworkPractice.refactor.pageobjects.LandingPage;
 import seleniumFrameworkPractice.refactor.pageobjects.OrderDetailsPage;
 import seleniumFrameworkPractice.refactor.pageobjects.OrderPage;
 import seleniumFrameworkPractice.refactor.pageobjects.ProductCatalogue;
@@ -22,20 +24,20 @@ public class PlaceOrderTest extends BaseTest {
 
 	
 
-	@Test
-	public  void SubmitOrderTest() throws IOException {
+	@Test(dataProvider = "getDatabyJson")
+	public  void SubmitOrderTest(HashMap<String,String> map) throws IOException {
 		// TODO Auto-generated method stub
 
 		
 
-		String product_Name = "ADIDAS ORIGINAL";
+//		String product_Name = "ADIDAS ORIGINAL";
 
-		ProductCatalogue productCatalogue = landingPage.loginToAccount("Surendhar@selenium.com", "Sura@1234");
-		productCatalogue.addproductToCart(product_Name);
+		ProductCatalogue productCatalogue = landingPage.loginToAccount(map.get("username"), map.get("password"));
+		productCatalogue.addproductToCart(map.get("product_Name"));
 
 		CartPage cartPage = productCatalogue.goToCartPage();
 
-		Boolean match = cartPage.findProductInCart(product_Name);
+		Boolean match = cartPage.findProductInCart(map.get("product_Name"));
 		Assert.assertTrue(match);
 
 		CheckOutPage checkOutPage = cartPage.goToCheckout();
@@ -65,4 +67,15 @@ public class PlaceOrderTest extends BaseTest {
 		
 		Assert.assertTrue(orderPage.findProductInOrders(product_Name));
 	}
+	
+	@DataProvider
+	public Object[][] getDatabyJson() throws IOException
+	{
+		
+		List<HashMap<String, String>> data = getDataReader("PurchaseOrder.json");
+		return new Object[][] {{data.get(0)},{data.get(1)}} ;
+	}
+	
+	
 }
+

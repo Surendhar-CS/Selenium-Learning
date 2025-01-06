@@ -4,8 +4,13 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.time.Duration;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Properties;
 
+import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
@@ -13,6 +18,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 
+import seleniumFrameworkPractice.data.DataReader;
 import seleniumFrameworkPractice.refactor.pageobjects.LandingPage;
 
 public class BaseTest {
@@ -52,6 +58,22 @@ public class BaseTest {
 	@AfterMethod(alwaysRun = true)
 	public void closeApplication() {
 		driver.quit();
+	}
+	
+	public List<HashMap<String, String>> getDataReader(String filename) throws IOException
+	{
+		DataReader reader=new DataReader();
+	return	reader.getJsonData(filename);
+	}
+	
+	public String  getScreenshot(String testcasename) throws IOException
+	{
+		
+	TakesScreenshot ts=	(TakesScreenshot)driver;
+	File screenshotAs = ts.getScreenshotAs(OutputType.FILE);
+	File file = new File(System.getProperty("user.dir")+"//reports//"+testcasename+".png");
+	FileUtils.copyFile(screenshotAs, file);
+	return file.getPath();
 	}
 
 }
