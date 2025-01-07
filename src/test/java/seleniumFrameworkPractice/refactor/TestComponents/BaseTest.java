@@ -17,6 +17,7 @@ import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.DataProvider;
 
 import seleniumFrameworkPractice.data.DataReader;
 import seleniumFrameworkPractice.refactor.pageobjects.LandingPage;
@@ -60,20 +61,22 @@ public class BaseTest {
 		driver.quit();
 	}
 	
-	public List<HashMap<String, String>> getDataReader(String filename) throws IOException
+	public  List<HashMap<String, String>> getDataReader(String filename) throws IOException
 	{
 		DataReader reader=new DataReader();
 	return	reader.getJsonData(filename);
 	}
 	
-	public String  getScreenshot(String testcasename) throws IOException
+	public String  getScreenshot(String testcasename,WebDriver driver) throws IOException
 	{
 		
 	TakesScreenshot ts=	(TakesScreenshot)driver;
 	File screenshotAs = ts.getScreenshotAs(OutputType.FILE);
 	File file = new File(System.getProperty("user.dir")+"//reports//"+testcasename+".png");
 	FileUtils.copyFile(screenshotAs, file);
+	System.out.println(file.getPath());
 	return file.getPath();
+	
 	}
-
+	
 }

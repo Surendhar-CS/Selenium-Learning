@@ -1,6 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
-<suite name="Suite" parallel="classes">
+<suite name="Suite" parallel="tests">
+<listeners>
+<listener class-name="seleniumFrameworkPractice.refactor.TestComponents.Listeners"></listener>
+</listeners>
+<test thread-count="5" name="PlaceOrderTest">
+		<classes>
+			<class
+				name="seleniumFrameworkPractice.refactor.tests.PlaceOrderTest" />
+		</classes>
+	</test>
 	<test thread-count="5" name="ErrorValidations">
 		<classes>
 			<class
@@ -9,10 +18,5 @@
 	</test>
 
 
-	<test thread-count="5" name="PlaceOrderTest">
-		<classes>
-			<class
-				name="seleniumFrameworkPractice.refactor.tests.PlaceOrderTest" />
-		</classes>
-	</test> <!-- Test -->
+	 <!-- Test -->
 </suite> <!-- Suite -->

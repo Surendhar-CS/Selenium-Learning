@@ -1,13 +1,9 @@
 package seleniumFrameworkPractice.refactor.tests;
 
-import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 
-import org.apache.commons.io.FileUtils;
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.TakesScreenshot;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -24,7 +20,7 @@ public class PlaceOrderTest extends BaseTest {
 
 	
 
-	@Test(dataProvider = "getDatabyJson")
+	@Test(dataProvider = "getDatabyJson",groups = {"PlaceOrderTest"})
 	public  void SubmitOrderTest(HashMap<String,String> map) throws IOException {
 		// TODO Auto-generated method stub
 
@@ -49,8 +45,8 @@ public class PlaceOrderTest extends BaseTest {
 		
 
 		SoftAssert assertion = new SoftAssert();
-//		assertion.assertEquals(confirmMsg, "Thankyou for the order.");
-		assertion.assertEquals(confirmMsg,"Thankyou for the order.".toUpperCase());
+		assertion.assertEquals(confirmMsg, "Thankyou for the order.");
+//		assertion.assertEquals(confirmMsg,"Thankyou for the order.".toUpperCase());
 
 		try {
 			assertion.assertAll();
@@ -69,7 +65,7 @@ public class PlaceOrderTest extends BaseTest {
 	}
 	
 	@DataProvider
-	public Object[][] getDatabyJson() throws IOException
+	public   Object[][] getDatabyJson() throws IOException
 	{
 		
 		List<HashMap<String, String>> data = getDataReader("PurchaseOrder.json");

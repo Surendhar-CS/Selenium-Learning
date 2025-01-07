@@ -18,6 +18,9 @@ public class CheckOutPage extends AbstractComponents {
 	@FindBy(css = ".form-group")
 	WebElement countryDropdownBtn;
 
+	@FindBy(css = ".ng-trigger-flyInOut")
+	WebElement ToastError;
+	
 	@FindBy(css = ".action__submit")
 	WebElement placeOrderBtn;
 	
@@ -49,6 +52,11 @@ public class CheckOutPage extends AbstractComponents {
 		placeOrderBtn.click();
 		return new OrderDetailsPage(driver);
 		
+	}
+	public String getErrorMsg()
+	{
+		waitForElementToAppear(ToastError);
+		return ToastError.getText();
 	}
 
 }

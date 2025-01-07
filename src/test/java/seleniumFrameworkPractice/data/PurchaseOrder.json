@@ -10,5 +10,12 @@
 	"password":"Sura@1234",
 	"product_Name":"BANARSI SAREE"
 }
+,
+
+{
+	"username":"sura@test.com",
+	"password":"Suras@1234",
+	"product_Name":"BANARSI SAREE"
+}
 
 ]
