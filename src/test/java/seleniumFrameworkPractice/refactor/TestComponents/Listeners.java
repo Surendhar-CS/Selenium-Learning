@@ -16,17 +16,21 @@ public class Listeners extends BaseTest implements  ITestListener {
 
 	ExtentReports extent= ExtentReportsNG.getExtentReportsObject();
 	ExtentTest test;
+	ThreadLocal<ExtentTest> testThread=new ThreadLocal<ExtentTest>();
 	@Override
 	public void onTestStart(ITestResult result) {
 		// TODO Auto-generated method stub
+		
+		
 		test = extent.createTest(result.getMethod().getMethodName());
 	
+		testThread.set(test);
 	}
 
 	@Override
 	public void onTestSuccess(ITestResult result) {
 		// TODO Auto-generated method stub
-		test.log(Status.PASS, "Test Passed");
+		testThread.get().log(Status.PASS, "Test Passed");
 	}
 
 	@Override
@@ -40,8 +44,8 @@ public class Listeners extends BaseTest implements  ITestListener {
 			e1.printStackTrace();
 		}
 		
-		test.log(Status.FAIL, "Test Failed");
-		test.fail(result.getThrowable());
+		testThread.get().log(Status.FAIL, "Test Failed");
+		testThread.get().fail(result.getThrowable());
 		String path = null;
 		try {
 			path = getScreenshot(result.getMethod().getMethodName(),driver);
@@ -49,7 +53,7 @@ public class Listeners extends BaseTest implements  ITestListener {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		test.addScreenCaptureFromPath(path, result.getMethod().getMethodName());
+		testThread.get().addScreenCaptureFromPath(path, result.getMethod().getMethodName());
 	}
 
 	@Override
@@ -64,7 +68,6 @@ public class Listeners extends BaseTest implements  ITestListener {
 	
 	}
 
-	@Override
 	public void onTestFailedWithTimeout(ITestResult result) {
 		// TODO Auto-generated method stub
 	

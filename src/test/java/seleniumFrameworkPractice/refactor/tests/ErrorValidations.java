@@ -1,21 +1,15 @@
 package seleniumFrameworkPractice.refactor.tests;
 
-import java.io.IOException;
-import java.util.HashMap;
-
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import org.testng.asserts.SoftAssert;
 
 import seleniumFrameworkPractice.refactor.TestComponents.BaseTest;
-import seleniumFrameworkPractice.refactor.pageobjects.CartPage;
-import seleniumFrameworkPractice.refactor.pageobjects.CheckOutPage;
-import seleniumFrameworkPractice.refactor.pageobjects.OrderDetailsPage;
-import seleniumFrameworkPractice.refactor.pageobjects.ProductCatalogue;
+import seleniumFrameworkPractice.refactor.TestComponents.Retry;
+
 
 public class ErrorValidations extends BaseTest {
 
-	@Test(groups = {"ErrorHandlings"})
+	@Test(groups = {"ErrorHandlings"},retryAnalyzer =Retry.class)
 	public void incorrectCredentialsTest()
 	{
 	landingPage.loginToAccount("Surendhar@selenium.com", "Sura@12345");
@@ -32,7 +26,7 @@ public class ErrorValidations extends BaseTest {
 //
 ////		String product_Name = "ADIDAS ORIGINAL";
 //
-//		ProductCatalogue productCatalogue = landingPage.loginToAccount(map.get("username"), map.get("password"));
+//		ProductCatalogue producOtCatalogue = landingPage.loginToAccount(map.get("username"), map.get("password"));
 //		productCatalogue.addproductToCart(map.get("product_Name"));
 //
 //		CartPage cartPage = productCatalogue.goToCartPage();

@@ -33,7 +33,7 @@ public class BaseTest {
 				+ "\\src\\main\\java\\seleniumFrameworkPractice\\refactor\\resources\\application.properties"));
 		prop.load(ios);
 
-		String BrowserName = prop.getProperty("browser");
+		String BrowserName=System.getProperty("browserName")==null?prop.getProperty("browser"):System.getProperty("browserName");
 
 		if (BrowserName.equalsIgnoreCase("edge")) {
 			driver = new EdgeDriver();
