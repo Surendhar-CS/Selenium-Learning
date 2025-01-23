@@ -40,7 +40,7 @@ public class relativeLocatorTest {
 		System.out.println(driver.findElement(nameLabel).getText());
 		WebElement checkBox = driver.findElement(By.xpath("//label[text()='Check me out if you Love IceCreams!']"));
 		driver.findElement(RelativeLocator.with(By.tagName("input")).toLeftOf(checkBox)).click();
-		WebElement radioButton = driver.findElement(By.id("inlineRadio1"));
+//		WebElement radioButton = driver.findElement(By.id("inlineRadio1"));
 		WebElement radioLabel = driver.findElement(RelativeLocator.with(By.tagName("label")).toRightOf(nameLabel));
 		System.out.println(radioLabel.getText());
 

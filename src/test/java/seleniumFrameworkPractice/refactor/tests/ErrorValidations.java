@@ -14,7 +14,7 @@ public class ErrorValidations extends BaseTest {
 	{
 	landingPage.loginToAccount("Surendhar@selenium.com", "Sura@12345");
 	
-	Assert.assertEquals(landingPage.getErrorMsg()," Incorrect email or password");
+	Assert.assertEquals(landingPage.getErrorMsg(),"Incorrect email or password.");
 	
 	
 	}
