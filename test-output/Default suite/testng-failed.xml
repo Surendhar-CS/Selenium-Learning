@@ -3,13 +3,13 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="seleniumFrameworkPractice.refactor.tests.ErrorValidations">
+      <class name="seleniumFrameworkPractice.refactor.tests.PlaceOrderTest">
         <methods>
           <include name="launchApplication"/>
-          <include name="incorrectCredentialsTest"/>
+          <include name="SubmitOrderTest" invocation-numbers="0"/>
           <include name="closeApplication"/>
         </methods>
-      </class> <!-- seleniumFrameworkPractice.refactor.tests.ErrorValidations -->
+      </class> <!-- seleniumFrameworkPractice.refactor.tests.PlaceOrderTest -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

@@ -18,11 +18,10 @@ public class AbstractComponents {
 
 	WebDriver driver;
 
-	WebDriverWait wait;
-	Actions key;
+	private static WebDriverWait wait;
+	private static Actions key;
 
-	@FindBy(css = "[routerlink*='cart']")
-	WebElement cartBtn;
+
 
 	@FindBy(css = "[routerlink*='myorders']")
 	WebElement OrdersBtn;
@@ -34,12 +33,7 @@ public class AbstractComponents {
 		key = new Actions(driver);
 	}
 
-	public CartPage goToCartPage() {
-		scrollTotheElement(cartBtn);
-		waitForElementToBeClickable(cartBtn);
-		cartBtn.click();
-		return new CartPage(driver);
-	}
+	
 
 	public OrderPage goToOrderPage() {
 		waitForElementToBeClickable(OrdersBtn);
@@ -47,36 +41,36 @@ public class AbstractComponents {
 		return new OrderPage(driver);
 	}
 
-	public void waitForElementToBeClickable(WebElement cartBtn) {
+	public static void waitForElementToBeClickable(WebElement cartBtn) {
 		wait.until(ExpectedConditions.elementToBeClickable(cartBtn));
 	}
 
-	public void waitForElementToAppear(By findBy) {
+	public static void waitForElementToAppear(By findBy) {
 
 		wait.until(ExpectedConditions.visibilityOfElementLocated(findBy));
 	}
 
-	public void waitForElementToAppear(WebElement findBy) {
+	public static void waitForElementToAppear(WebElement findBy) {
 
 		wait.until(ExpectedConditions.visibilityOf(findBy));
 	}
 
-	public void waitForElementToDisappear(WebElement findBy) {
+	public static void waitForElementToDisappear(WebElement findBy) {
 
 		wait.until(ExpectedConditions.invisibilityOf(findBy));
 	}
 
-	public void waitForVisibilityOfAllElements(List<WebElement> countryDropdown) {
+	public static void waitForVisibilityOfAllElements(List<WebElement> countryDropdown) {
 
 		wait.until(ExpectedConditions.visibilityOfAllElements(countryDropdown));
 
 	}
 
-	public void scrollTotheElement(WebElement findBy) {
+	public static void scrollTotheElement(WebElement findBy) {
 		key.scrollToElement(findBy).build().perform();;
 	}
 
-	public void inputTextField(String value) {
+	public static void inputTextField(String value) {
 		key.sendKeys(value).build().perform();
 	}
 

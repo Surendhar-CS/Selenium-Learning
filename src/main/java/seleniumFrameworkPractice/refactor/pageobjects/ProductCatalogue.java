@@ -11,13 +11,13 @@ import org.openqa.selenium.support.PageFactory;
 
 import seleniumFrameworkPractice.refactor.AbstractComponents.AbstractComponents;
 
-public class ProductCatalogue extends AbstractComponents {
+public class ProductCatalogue {
 
 	WebDriver driver;
 
 	Actions actions;
 	public ProductCatalogue(WebDriver driver) {
-		super(driver);
+//		super(driver);
 		this.driver = driver;
 		PageFactory.initElements(driver, this);
 	}
@@ -44,18 +44,18 @@ public class ProductCatalogue extends AbstractComponents {
 	public void addproductToCart(String prodName) {
 		actions=new Actions(driver);
 		WebElement prod = findProduct(prodName);
-//		waitForElementToBeClickable(AddToCartBtn);
-		scrollTotheElement(prod.findElement(AddToCartBtn));
+		AbstractComponents.waitForElementToBeClickable(AddToCartBtnElement);
+		AbstractComponents.scrollTotheElement(prod.findElement(AddToCartBtn));
 		prod.findElement(AddToCartBtn).click();
 	
-		waitForElementToAppear(toastMsg);
-		waitForElementToAppear(loadingAnimationBy);
-		waitForElementToDisappear(loadingAnimation);
+		AbstractComponents.waitForElementToAppear(toastMsg);
+		AbstractComponents.waitForElementToAppear(loadingAnimationBy);
+		AbstractComponents.waitForElementToDisappear(loadingAnimation);
 	}
 
 	public WebElement findProduct(String prodName) {
 
-		waitForVisibilityOfAllElements(productsList);
+		AbstractComponents.waitForVisibilityOfAllElements(productsList);
 		return productsList.stream().filter(product -> {
 			// Extract the text from the <b> tag inside <h5> tag (product name)
 			String productName = product.findElement(ProductNamefield).getText().trim();

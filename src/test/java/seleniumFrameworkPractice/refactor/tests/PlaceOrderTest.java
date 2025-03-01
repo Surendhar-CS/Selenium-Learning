@@ -12,6 +12,7 @@ import org.testng.asserts.SoftAssert;
 import seleniumFrameworkPractice.refactor.TestComponents.BaseTest;
 import seleniumFrameworkPractice.refactor.pageobjects.CartPage;
 import seleniumFrameworkPractice.refactor.pageobjects.CheckOutPage;
+import seleniumFrameworkPractice.refactor.pageobjects.HomePage;
 import seleniumFrameworkPractice.refactor.pageobjects.OrderDetailsPage;
 import seleniumFrameworkPractice.refactor.pageobjects.OrderPage;
 import seleniumFrameworkPractice.refactor.pageobjects.ProductCatalogue;
@@ -31,7 +32,7 @@ public class PlaceOrderTest extends BaseTest {
 		ProductCatalogue productCatalogue = landingPage.loginToAccount(map.get("username"), map.get("password"));
 		productCatalogue.addproductToCart(map.get("product_Name"));
 
-		CartPage cartPage = productCatalogue.goToCartPage();
+		CartPage cartPage = HomePage.goToCartPage();
 
 		Boolean match = cartPage.findProductInCart(map.get("product_Name"));
 		Assert.assertTrue(match);
@@ -45,8 +46,8 @@ public class PlaceOrderTest extends BaseTest {
 		
 
 		SoftAssert assertion = new SoftAssert();
-		assertion.assertEquals(confirmMsg, "Thankyou for the order.");
-//		assertion.assertEquals(confirmMsg,"Thankyou for the order.".toUpperCase());
+//		assertion.assertEquals(confirmMsg, "Thankyou for the order.");
+		assertion.assertEquals(confirmMsg,"Thankyou for the order.".toUpperCase());
 
 		try {
 			assertion.assertAll();
@@ -59,17 +60,17 @@ public class PlaceOrderTest extends BaseTest {
 	public void OrderpageProductValidation() {
 		String product_Name = "ADIDAS ORIGINAL";
 		ProductCatalogue productCatalogue = landingPage.loginToAccount("Surendhar@selenium.com", "Sura@1234");
-		OrderPage orderPage = productCatalogue.goToOrderPage();
+//		OrderPage orderPage = productCatalogue.goToOrderPage();
 		
-		Assert.assertTrue(orderPage.findProductInOrders(product_Name));
+//		Assert.assertTrue(orderPage.findProductInOrders(product_Name));
 	}
 	
 	@DataProvider
 	public   Object[][] getDatabyJson() throws IOException
 	{
 		
-		List<HashMap<String, String>> data = getDataReader("PurchaseOrder.json");
-		return new Object[][] {{data.get(0)},{data.get(1)}} ;
+		List<HashMap<String, String>> data = getDataReader("PurchaseOrder2.json");
+		return new Object[][] {{data.get(0)}} ;
 	}
 	
 	

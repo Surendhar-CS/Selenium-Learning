@@ -17,13 +17,16 @@ import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+
 import seleniumFrameworkPractice.data.DataReader;
+import seleniumFrameworkPractice.refactor.pageobjects.HomePage;
 import seleniumFrameworkPractice.refactor.pageobjects.LandingPage;
 
 public class BaseTest {
 
 	public WebDriver driver;
 	public LandingPage landingPage;
+	public HomePage HomePage;
 
 	public WebDriver IntializeDriver() throws IOException {
 		Properties prop = new Properties();
@@ -50,6 +53,7 @@ public class BaseTest {
 	public LandingPage launchApplication() throws IOException {
 		driver = IntializeDriver();
 		landingPage = new LandingPage(driver);
+		HomePage = new HomePage(driver);
 		landingPage.goTo();
 		return landingPage;
 	}
